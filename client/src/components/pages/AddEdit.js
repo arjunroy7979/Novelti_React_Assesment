@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import data from '../../data.json'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const AddEdit = () => {
     const [user, setUser] = useState({
@@ -22,7 +22,6 @@ const AddEdit = () => {
     const [formerror, setFormerror] = useState({});
     const [isSubmit, setIssubmit] = useState(false)
 
-    const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
@@ -43,9 +42,8 @@ const AddEdit = () => {
         console.log(data)
         const response = await axios.post('http://127.0.0.8:8080/user', data);
         if (response.status === 200) {
-            toast.success(response.data)
             setTimeout(() => {
-                navigate('/')
+                 toast.success(response.data)
             }, 5000)
         }
     }
@@ -55,9 +53,6 @@ const AddEdit = () => {
         const response = await axios.put(`http://127.0.0.8:8080/user/${id}`, data);
         if (response.status === 200) {
             toast.success(response.data)
-            setTimeout(() => {
-                navigate('/')
-            }, 5000)
         }
     }
 
@@ -92,16 +87,16 @@ const AddEdit = () => {
         if (!values.firstName) {
             errors.firstName = "firstName is Required"
         } else if (values.firstName.length < 5) {
-            errors.firstName = "FirstName cannot be more than 5 character"
+            errors.firstName = "FirstName can be more than 5 character"
         } else if (values.firstName.length >= 15) {
-            errors.firstName = "LastName cannot be more than 6 character"
+            errors.firstName = "LastName cannot be more than 15 character"
         }
         if (!values.lastName) {
             errors.lastName = "lastName is Required"
         } else if (values.lastName.length < 5) {
-            errors.firstName = "FirstName cannot be more than 5 character"
+            errors.firstName = "FirstName can be more than 5 character"
         } else if (values.lastName.length >= 15) {
-            errors.lastName = "LastName cannot be more than 6 character"
+            errors.lastName = "LastName cannot be more than 15 character"
         }
         if (!values.email) {
             errors.email = "Email is Required"
