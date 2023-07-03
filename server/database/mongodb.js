@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 export default async function ConnectionDB() {
-    mongoose.connect('mongodb+srv://admin:admin@cluster0.kxfrlrn.mongodb.net/Employee')
+    mongoose.connect('mongodb://127.0.0.1:27017/Employee')
         .then((res) => console.log("Database connected"))
         .catch((err) => console.log(err))
 }
