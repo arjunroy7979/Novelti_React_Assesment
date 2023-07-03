@@ -124,8 +124,8 @@ const AddEdit = () => {
             errors.zipcode = "zipcode is Required"
         } else if (values.zipcode.length <= 4) {
             errors.zipcode = "zipcode must be more than 4 character"
-        } else if (values.zipcode.length >= 6) {
-            errors.zipcode = "zipcode cannot be more than 6 character"
+        } else if (values.zipcode.length >= 8) {
+            errors.zipcode = "zipcode cannot be more than 8 character"
         }
         return errors;
     }
